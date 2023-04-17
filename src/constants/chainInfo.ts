@@ -7,6 +7,9 @@ import bnbSquareLogoUrl from 'assets/svg/bnb_square_logo.svg'
 import bnbLogo from 'assets/svg/bnb-logo.svg'
 import celoLogo from 'assets/svg/celo_logo.svg'
 import celoSquareLogoUrl from 'assets/svg/celo_square_logo.svg'
+import eosLogo from 'assets/svg/eos-logo.svg'
+import eosSquareLogoUrl from 'assets/svg/eos_square_logo.svg'
+import eosCircleLogoUrl from 'assets/images/eosCircle.svg'
 import optimismSquareLogoUrl from 'assets/svg/optimism_square_logo.svg'
 import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 import polygonSquareLogoUrl from 'assets/svg/polygon_square_logo.svg'
@@ -222,7 +225,7 @@ const CHAIN_INFO: ChainInfoMap = {
     explorer: 'https://bscscan.com/',
     infoLink: 'https://info.uniswap.org/#/bnb/',
     label: 'EOS',
-    logoUrl: bnbLogo,
+    logoUrl: eosLogo,
     circleLogoUrl: bnbCircleLogoUrl,
     squareLogoUrl: bnbSquareLogoUrl,
     nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
