@@ -356,7 +356,7 @@ export const DAI_BSC = new Token(SupportedChainId.BNB, '0x1AF3F329e8BE154074D876
 
 
 
-export const USDC_BSC = new Token(
+export const USDC_EOS = new Token(
   SupportedChainId.EOS,
   '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
   18,
@@ -364,7 +364,7 @@ export const USDC_BSC = new Token(
   'USDC'
 )
 
-export const USDT_BSC = new Token(
+export const USDT_EOS = new Token(
   SupportedChainId.EOS,
   '0x55d398326f99059fF775485246999027B3197955',
   18,
@@ -372,7 +372,7 @@ export const USDT_BSC = new Token(
   'USDT'
 )
 
-export const ETH_BSC = new Token(
+export const ETH_EOS = new Token(
   SupportedChainId.EOS,
   '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
   18,
@@ -380,7 +380,7 @@ export const ETH_BSC = new Token(
   'Ethereum'
 )
 
-export const MATIC_BSC = new Token(
+export const MATIC_EOS = new Token(
   SupportedChainId.EOS,
   '0xCC42724C6683B7E57334c4E856f4c9965ED682bD',
   18,
@@ -388,7 +388,7 @@ export const MATIC_BSC = new Token(
   'Matic'
 )
 
-export const FRAX_BSC = new Token(
+export const FRAX_EOS = new Token(
   SupportedChainId.EOS,
   '0x90C97F71E18723b0Cf0dfa30ee176Ab653E89F40',
   18,
@@ -396,9 +396,9 @@ export const FRAX_BSC = new Token(
   'FRAX'
 )
 
-export const BTC_BSC = new Token(SupportedChainId.EOS, '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c', 18, 'BTCB', 'BTCB')
+export const BTC_EOS = new Token(SupportedChainId.EOS, '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c', 18, 'BTCB', 'BTCB')
 
-export const CAKE_BSC = new Token(
+export const CAKE_EOS = new Token(
   SupportedChainId.EOS,
   '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
   18,
@@ -406,7 +406,7 @@ export const CAKE_BSC = new Token(
   'Cake'
 )
 
-export const BUSD_BSC = new Token(
+export const BUSD_EOS = new Token(
   SupportedChainId.EOS,
   '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
   18,
@@ -414,7 +414,7 @@ export const BUSD_BSC = new Token(
   'BUSD'
 )
 
-export const DAI_BSC = new Token(SupportedChainId.EOS, '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3', 18, 'DAI', 'DAI')
+export const DAI_EOS = new Token(SupportedChainId.EOS, '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3', 18, 'DAI', 'DAI')
 
 
 
@@ -539,7 +539,7 @@ function isBsc(chainId: number): chainId is SupportedChainId.BNB {
   return chainId === SupportedChainId.BNB
 }
 
-function isBsc(chainId: number): chainId is SupportedChainId.EOS {
+function isEos(chainId: number): chainId is SupportedChainId.EOS {
   return chainId === SupportedChainId.EOS
 }
 
@@ -559,6 +559,24 @@ class BscNativeCurrency extends NativeCurrency {
   public constructor(chainId: number) {
     if (!isBsc(chainId)) throw new Error('Not bnb')
     super(chainId, 18, 'BNB', 'BNB')
+  }
+}
+
+class EosNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId
+  }
+
+  get wrapped(): Token {
+    if (!isEos(this.chainId)) throw new Error('Not eos')
+    const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
+    invariant(wrapped instanceof Token)
+    return wrapped
+  }
+
+  public constructor(chainId: number) {
+    if (!isEos(chainId)) throw new Error('Not eos')
+    super(chainId, 18, 'EOS', 'EOS')
   }
 }
 
@@ -586,6 +604,8 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
     nativeCurrency = getCeloNativeCurrency(chainId)
   } else if (isBsc(chainId)) {
     nativeCurrency = new BscNativeCurrency(chainId)
+  } else if (isEos(chainId)) {
+    nativeCurrency = new EosNativeCurrency(chainId)
   } else {
     nativeCurrency = ExtendedEther.onChain(chainId)
   }
@@ -602,7 +622,7 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     [SupportedChainId.POLYGON]: USDC_POLYGON.address,
     [SupportedChainId.POLYGON_MUMBAI]: USDC_POLYGON_MUMBAI.address,
     [SupportedChainId.BNB]: USDC_BSC.address,
-    [SupportedChainId.EOS]: USDC_BSC.address,
+    [SupportedChainId.EOS]: USDC_EOS.address,
     [SupportedChainId.CELO]: PORTAL_USDC_CELO.address,
     [SupportedChainId.CELO_ALFAJORES]: PORTAL_USDC_CELO.address,
     [SupportedChainId.GOERLI]: USDC_GOERLI.address,
