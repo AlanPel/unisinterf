@@ -24,7 +24,7 @@ export enum SupportedChainId {
 
   BNB = 56,
 
-  EOS = 56,
+  EOS = 15557,
 }
 
 export const CHAIN_IDS_TO_NAMES = {
