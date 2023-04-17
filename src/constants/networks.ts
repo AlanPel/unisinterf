@@ -91,15 +91,7 @@ export const FALLBACK_URLS = {
   ],
   [SupportedChainId.EOS]: [
     // "Safe" URLs
-    'https://endpoints.omniatech.io/v1/bsc/mainnet/public',
-    'https://bsc-mainnet.gateway.pokt.network/v1/lb/6136201a7bad1500343e248d',
-    'https://1rpc.io/bnb',
-    'https://bsc-dataseed3.binance.org',
-    'https://bsc-dataseed2.defibit.io',
-    'https://bsc-dataseed1.ninicoin.io',
-    'https://binance.nodereal.io',
-    'https://bsc-dataseed4.defibit.io',
-    'https://rpc.ankr.com/bsc',
+    'https://api.testnet.evm.eosnetwork.com',
   ],
 }
 
@@ -140,5 +132,5 @@ export const RPC_URLS = {
   [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
   [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
   [SupportedChainId.BNB]: [QUICKNODE_RPC_URL, ...FALLBACK_URLS[SupportedChainId.BNB]],
-  [SupportedChainId.EOS]: [QUICKNODE_RPC_URL, ...FALLBACK_URLS[SupportedChainId.EOS]],
+  [SupportedChainId.EOS]: FALLBACK_URLS[SupportedChainId.EOS],
 }

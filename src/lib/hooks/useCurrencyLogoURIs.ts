@@ -39,7 +39,7 @@ export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MA
     case SupportedChainId.BNB:
       return BnbLogo
     case SupportedChainId.EOS:
-        return eosLogo
+      return eosLogo
     case SupportedChainId.CELO:
     case SupportedChainId.CELO_ALFAJORES:
       return CeloLogo

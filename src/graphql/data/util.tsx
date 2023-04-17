@@ -68,7 +68,7 @@ export const CHAIN_ID_TO_BACKEND_NAME: { [key: number]: Chain } = {
   [SupportedChainId.OPTIMISM]: Chain.Optimism,
   [SupportedChainId.OPTIMISM_GOERLI]: Chain.Optimism,
   [SupportedChainId.BNB]: Chain.Bnb,
-  [SupportedChainId.EOS]: Chain.Bnb,
+  [SupportedChainId.EOS]: Chain.Eos,
 }
 
 export function chainIdToBackendName(chainId: number | undefined) {
@@ -83,6 +83,7 @@ const GQL_CHAINS: number[] = [
   SupportedChainId.POLYGON,
   SupportedChainId.ARBITRUM_ONE,
   SupportedChainId.CELO,
+  SupportedChainId.EOS,
 ]
 
 export function isGqlSupportedChain(chainId: number | undefined): chainId is SupportedChainId {
@@ -110,6 +111,7 @@ const URL_CHAIN_PARAM_TO_BACKEND: { [key: string]: Chain } = {
   ethereum: Chain.Ethereum,
   polygon: Chain.Polygon,
   celo: Chain.Celo,
+  eos: Chain.Eos,
   arbitrum: Chain.Arbitrum,
   optimism: Chain.Optimism,
   bnb: Chain.Bnb,
@@ -129,7 +131,7 @@ export const CHAIN_NAME_TO_CHAIN_ID: { [key in Chain]: SupportedChainId } = {
   [Chain.Arbitrum]: SupportedChainId.ARBITRUM_ONE,
   [Chain.UnknownChain]: SupportedChainId.MAINNET,
   [Chain.Bnb]: SupportedChainId.BNB,
-  [Chain.Bnb]: SupportedChainId.EOS,
+  [Chain.Eos]: SupportedChainId.EOS,
 }
 
 export function fromGraphQLChain(chain: Chain): SupportedChainId {

@@ -47,6 +47,7 @@ const DEFAULT_CHAINS = [
   SupportedChainId.OPTIMISM,
   SupportedChainId.POLYGON,
   SupportedChainId.CELO,
+  upportedChainId.EOS,
 ]
 
 type UseMultiChainPositionsData = { positions: PositionInfo[] | undefined; loading: boolean }
