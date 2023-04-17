@@ -19,7 +19,7 @@ import ms from 'ms.macro'
 import { darkTheme } from 'theme/colors'
 
 import { SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, OPTIMISM_LIST, PLASMA_BNB_LIST } from './lists'
+import { ARBITRUM_LIST, CELO_LIST, OPTIMISM_LIST, PLASMA_BNB_LIST , EOS_LIST } from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
 
@@ -220,16 +220,16 @@ const CHAIN_INFO: ChainInfoMap = {
   [SupportedChainId.EOS]: {
     networkType: NetworkType.L1,
     blockWaitMsBeforeWarning: ms`10m`,
-    bridge: 'https://cbridge.celer.network/1/56',
+    bridge: 'http://bridge.testnet.evm.eosnetwork.com/',
     docs: 'https://docs.bnbchain.org/',
-    explorer: 'https://bscscan.com/',
+    explorer: 'http://explorer.testnet.evm.eosnetwork.com/',
     infoLink: 'https://info.uniswap.org/#/bnb/',
     label: 'EOS',
     logoUrl: eosLogo,
-    circleLogoUrl: bnbCircleLogoUrl,
-    squareLogoUrl: bnbSquareLogoUrl,
-    nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-    defaultListUrl: PLASMA_BNB_LIST,
+    circleLogoUrl: eosCircleLogoUrl,
+    squareLogoUrl: eosSquareLogoUrl,
+    nativeCurrency: { name: 'EOS', symbol: 'EOS', decimals: 18 },
+    defaultListUrl: EOS_LIST,
     color: darkTheme.chain_56,
     backgroundColor: darkTheme.chain_56_background,
   },
