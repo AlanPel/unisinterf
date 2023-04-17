@@ -68,6 +68,7 @@ export const CHAIN_ID_TO_BACKEND_NAME: { [key: number]: Chain } = {
   [SupportedChainId.OPTIMISM]: Chain.Optimism,
   [SupportedChainId.OPTIMISM_GOERLI]: Chain.Optimism,
   [SupportedChainId.BNB]: Chain.Bnb,
+  [SupportedChainId.EOS]: Chain.Bnb,
 }
 
 export function chainIdToBackendName(chainId: number | undefined) {
@@ -128,6 +129,7 @@ export const CHAIN_NAME_TO_CHAIN_ID: { [key in Chain]: SupportedChainId } = {
   [Chain.Arbitrum]: SupportedChainId.ARBITRUM_ONE,
   [Chain.UnknownChain]: SupportedChainId.MAINNET,
   [Chain.Bnb]: SupportedChainId.BNB,
+  [Chain.Bnb]: SupportedChainId.EOS,
 }
 
 export function fromGraphQLChain(chain: Chain): SupportedChainId {

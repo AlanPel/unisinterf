@@ -105,6 +105,16 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     MATIC_BSC,
     CAKE_BSC,
   ],
+  [SupportedChainId.EOS]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.EOS],
+    DAI_BSC,
+    USDC_BSC,
+    USDT_BSC,
+    BUSD_BSC,
+    FRAX_BSC,
+    MATIC_BSC,
+    CAKE_BSC,
+  ],
   [SupportedChainId.CELO]: [CUSD_CELO, CEUR_CELO, CMC02_CELO, PORTAL_USDC_CELO, PORTAL_ETH_CELO],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
@@ -204,6 +214,15 @@ export const COMMON_BASES: ChainCurrencyList = {
     BTC_BSC,
     BUSD_BSC,
   ],
+  [SupportedChainId.EOS]: [
+    nativeOnChain(SupportedChainId.EOS),
+    DAI_BSC,
+    USDC_BSC,
+    USDT_BSC,
+    ETH_BSC,
+    BTC_BSC,
+    BUSD_BSC,
+  ],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -218,6 +237,15 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ],
   [SupportedChainId.BNB]: [
     ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.BNB],
+    DAI_BSC,
+    USDC_BSC,
+    USDT_BSC,
+    BTC_BSC,
+    BUSD_BSC,
+    ETH_BSC,
+  ],
+  [SupportedChainId.EOS]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.EOS],
     DAI_BSC,
     USDC_BSC,
     USDT_BSC,
